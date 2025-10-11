@@ -3,8 +3,8 @@ extends Node2D
 # Liste des chemins vers tes scènes
 const Scenes := {
 	"MAIN_MENU" = "res://scenes/main_menu.tscn",
-	# "LEVEL_1" = "res://scenes/levels/level_1.tscn",
-	# "SETTINGS" = "res://scenes/ui/settings.tscn",
+	"LEVEL_1" = "res://scenes/level_1.tscn",
+	"SETTINGS" = "res://scenes/settings.tscn",
 	"CREDITS" = "res://scenes/credits.tscn"
 	# "END_SCREEN_WIN" = "res://scenes/ui/end_screen_win.tscn",
 	# "END_SCREEN_LOSE" = "res://scenes/ui/end_screen_lose.tscn"
