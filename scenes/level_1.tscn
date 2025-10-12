@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs84031i3cwmj"]
-
-[ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/back.tscn" id="1_014kd"]
-
-[node name="Level1" type="Node2D"]
-
-[node name="BackUI" parent="." instance=ExtResource("1_014kd")]

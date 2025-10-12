@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func _on_start_game_pressed() -> void:
 	start_game.release_focus()
-	ScenesManager.change_scene(ScenesManager.Scenes["LEVEL_1"])
+	ScenesManager.change_scene(ScenesManager.Scenes["GAME"])
 
 func _on_options_pressed() -> void:
 	ScenesManager.change_scene(ScenesManager.Scenes["SETTINGS"])
