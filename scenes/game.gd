@@ -1,6 +1,6 @@
 extends Node2D
 
-var player_scene = load("res://scenes/player.tscn")
+@export var player_scene = Resource
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,15 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://1l50ouhjbtb2"]
+[gd_scene load_steps=11 format=3 uid="uid://1l50ouhjbtb2"]
 
 [ext_resource type="Texture2D" uid="uid://dmihtf5snxcgo" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://blkfahv882pxy" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://b38xl63470acm" path="res://components/C_health.gd" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://b68ca8rjq5bth" path="res://components/C_hurtbox.gd" id="4_qlg0r"]
+[ext_resource type="Script" uid="uid://bdppquqk5uhld" path="res://states/state_machine.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://dckeqannhlg10" path="res://states/idle_state.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://c5qg2ejmhd3ix" path="res://states/move_state.gd" id="7_fjrip"]
+[ext_resource type="Script" uid="uid://dwax21lfsrioa" path="res://states/shoot_state.gd" id="8_smehm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -33,5 +38,22 @@ metadata/_custom_type_script = "uid://b38xl63470acm"
 script = ExtResource("4_qlg0r")
 hurt_box = NodePath("../HurtBox")
 metadata/_custom_type_script = "uid://b68ca8rjq5bth"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("5_qlg0r")
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "shoot_state")]
+script = ExtResource("6_tuyoq")
+move_state = NodePath("../Move")
+shoot_state = NodePath("../Shoot")
+
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "shoot_state")]
+script = ExtResource("7_fjrip")
+idle_state = NodePath("../Idle")
+shoot_state = NodePath("../Shoot")
+
+[node name="Shoot" type="Node" parent="StateMachine"]
+script = ExtResource("8_smehm")
 
 [connection signal="died" from="HealthComponent" to="." method="died"]
