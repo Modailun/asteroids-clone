@@ -29,3 +29,5 @@ func _physics_process(_delta: float) -> void:
 	# Move the player and handle collisions
 	move_and_slide()
 
+func died() -> void:
+	print("Player died")

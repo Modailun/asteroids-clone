@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://1l50ouhjbtb2"]
+[gd_scene load_steps=7 format=3 uid="uid://1l50ouhjbtb2"]
 
 [ext_resource type="Texture2D" uid="uid://dmihtf5snxcgo" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://blkfahv882pxy" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://b38xl63470acm" path="res://components/C_health.gd" id="3_dqkch"]
+[ext_resource type="Script" uid="uid://b68ca8rjq5bth" path="res://components/C_hurtbox.gd" id="4_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
@@ -14,3 +18,20 @@ texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_tuyoq")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurt_box_component")]
+script = ExtResource("3_dqkch")
+hurt_box_component = NodePath("../HurtboxComponent")
+metadata/_custom_type_script = "uid://b38xl63470acm"
+
+[node name="HurtboxComponent" type="Node" parent="." node_paths=PackedStringArray("hurt_box")]
+script = ExtResource("4_qlg0r")
+hurt_box = NodePath("../HurtBox")
+metadata/_custom_type_script = "uid://b68ca8rjq5bth"
+
+[connection signal="died" from="HealthComponent" to="." method="died"]
