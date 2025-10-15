@@ -1,7 +1,6 @@
 extends State
 
 @export var idle_state: State
-@export var shoot_state: State
 
 func enter() -> void:
 	print("move")
@@ -35,6 +34,19 @@ func process_physics(delta: float) -> State:
 
 	if not Input.is_anything_pressed() and parent.velocity == Vector2.ZERO:
 		return idle_state
-	if Input.is_action_pressed("shoot"):
-		return shoot_state
 	return null
+
+func process_input(event: InputEvent) -> State:
+	if event.is_action_pressed("shoot") and can_shoot:
+		shoot()
+		can_shoot = false
+		cooldown.start()
+	return null
+
+func shoot():
+	var bullet = Bullet.instantiate()
+	parent.get_parent().add_child(bullet)
+	bullet.transform = marker_2d.global_transform
+
+func _on_cooldown_timeout() -> void:
+	can_shoot = true

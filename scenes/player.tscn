@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://1l50ouhjbtb2"]
+[gd_scene load_steps=10 format=3 uid="uid://1l50ouhjbtb2"]
 
 [ext_resource type="Texture2D" uid="uid://dmihtf5snxcgo" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://blkfahv882pxy" path="res://scripts/player.gd" id="1_g2els"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://bdppquqk5uhld" path="res://states/state_machine.gd" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://dckeqannhlg10" path="res://states/idle_state.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://c5qg2ejmhd3ix" path="res://states/move_state.gd" id="7_fjrip"]
-[ext_resource type="Script" uid="uid://dwax21lfsrioa" path="res://states/shoot_state.gd" id="8_smehm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
@@ -43,17 +42,23 @@ metadata/_custom_type_script = "uid://b68ca8rjq5bth"
 script = ExtResource("5_qlg0r")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "shoot_state")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state")]
 script = ExtResource("6_tuyoq")
 move_state = NodePath("../Move")
-shoot_state = NodePath("../Shoot")
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "shoot_state")]
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("7_fjrip")
 idle_state = NodePath("../Idle")
-shoot_state = NodePath("../Shoot")
 
-[node name="Shoot" type="Node" parent="StateMachine"]
-script = ExtResource("8_smehm")
+[node name="Marker2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -13)
+rotation = -1.5707964
+
+[node name="Cooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
 [connection signal="died" from="HealthComponent" to="." method="died"]
+[connection signal="timeout" from="Cooldown" to="StateMachine/Idle" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="Cooldown" to="StateMachine/Move" method="_on_cooldown_timeout"]
