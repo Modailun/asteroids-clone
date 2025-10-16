@@ -9,15 +9,17 @@
 [ext_resource type="Script" uid="uid://c5qg2ejmhd3ix" path="res://states/move_state.gd" id="7_fjrip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.15625, 0.15625)
+scale = Vector2(0.12499999, 0.12499999)
 texture = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -52,11 +54,12 @@ idle_state = NodePath("../Idle")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -13)
+position = Vector2(0, -11)
 rotation = -1.5707964
 
 [node name="Cooldown" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 0.2
 one_shot = true
 
 [connection signal="died" from="HealthComponent" to="." method="died"]
