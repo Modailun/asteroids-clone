@@ -6,12 +6,13 @@
 [ext_resource type="Script" uid="uid://b38xl63470acm" path="res://components/C_health.gd" id="3_405t2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hms1a"]
+size = Vector2(24, 24)
 
 [node name="Asteroids" type="Node2D"]
 script = ExtResource("1_405t2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.15625, 0.15625)
+scale = Vector2(0.18749999, 0.18749999)
 texture = ExtResource("1_hms1a")
 
 [node name="HurtBox" type="Area2D" parent="."]
