@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/back.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bq05mwffgtcrk" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://1l50ouhjbtb2" path="res://scenes/player.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://cnpgiaj85jchv" path="res://scenes/asteroids.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cnpgiaj85jchv" path="res://scenes/asteroidsbig.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")

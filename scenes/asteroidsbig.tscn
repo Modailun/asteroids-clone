@@ -1,21 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnpgiaj85jchv"]
+[gd_scene load_steps=7 format=3 uid="uid://cnpgiaj85jchv"]
 
-[ext_resource type="Script" uid="uid://e5u7g0s68l5p" path="res://scripts/asteroids.gd" id="1_405t2"]
+[ext_resource type="Script" uid="uid://e5u7g0s68l5p" path="res://scripts/asteroids.gd" id="1_bbxsd"]
 [ext_resource type="Texture2D" uid="uid://dmihtf5snxcgo" path="res://icon.svg" id="1_hms1a"]
 [ext_resource type="Script" uid="uid://b68ca8rjq5bth" path="res://components/C_hurtbox.gd" id="2_72i4m"]
+[ext_resource type="Resource" uid="uid://dl23es5iuupoh" path="res://resources/big_asteroids.tres" id="2_i6do1"]
 [ext_resource type="Script" uid="uid://b38xl63470acm" path="res://components/C_health.gd" id="3_405t2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hms1a"]
 size = Vector2(24, 24)
 
-[node name="Asteroids" type="Node2D"]
-script = ExtResource("1_405t2")
+[node name="AsteroidsBig" type="Node2D"]
+script = ExtResource("1_bbxsd")
+asteroid_stats = ExtResource("2_i6do1")
+metadata/_custom_type_script = "uid://e5u7g0s68l5p"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.18749999, 0.18749999)
 texture = ExtResource("1_hms1a")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_hms1a")
