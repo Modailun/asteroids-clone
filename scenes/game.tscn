@@ -1,18 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs84031i3cwmj"]
+[gd_scene load_steps=7 format=3 uid="uid://bs84031i3cwmj"]
 
 [ext_resource type="PackedScene" uid="uid://dea8gda2jhdv8" path="res://scenes/back.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bq05mwffgtcrk" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://1l50ouhjbtb2" path="res://scenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cnpgiaj85jchv" path="res://scenes/asteroids_big.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dsysh8luq5414" path="res://scenes/asteroids_medium.tscn" id="4_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cq025340k8c04" path="res://scenes/asteroids_small.tscn" id="5_u5sy4"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
 player_scene = ExtResource("2_lnu2h")
+big_asteroid_scene = ExtResource("4_lbhrr")
+medium_asteroid_scene = ExtResource("4_p57ef")
+small_asteroid_scene = ExtResource("5_u5sy4")
 
 [node name="BackUI" parent="." instance=ExtResource("1_uwrxv")]
-
-[node name="Asteroids" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(80, 120)
-
-[node name="Asteroids2" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(232, 64)

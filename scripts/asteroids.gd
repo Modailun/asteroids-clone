@@ -4,6 +4,8 @@ class_name Asteroids extends Node2D
 
 @export var asteroid_stats = Resource
 
+signal asteroid_died
+
 func _ready() -> void:
 	var direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 	rotation = direction.angle()
@@ -16,4 +18,13 @@ func _physics_process(delta: float) -> void:
 
 
 func died() -> void:
-	print("Asteroid died")
+	match asteroid_stats.taille:
+		asteroid_stats.tailles.BIG:
+			print("Big asteroid died")
+			asteroid_died.emit()
+		asteroid_stats.tailles.MEDIUM:
+			print("Medium asteroid died")
+			asteroid_died.emit()
+		asteroid_stats.tailles.SMALL:
+			print("Small asteroid died")
+			asteroid_died.emit()

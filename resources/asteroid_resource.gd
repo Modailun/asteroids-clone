@@ -2,6 +2,6 @@ extends Resource
 class_name AsteroidResource
 
 @export var speed: float
-@export var type: types
+@export var taille: tailles
 
-enum types {BIG, MEDIUM, SMALL}
+enum tailles {BIG, MEDIUM, SMALL}
