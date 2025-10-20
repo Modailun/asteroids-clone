@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsysh8luq5414"]
+
+[ext_resource type="Script" uid="uid://e5u7g0s68l5p" path="res://scripts/asteroids.gd" id="1_mtww1"]
+[ext_resource type="Resource" uid="uid://b5dykcth5ipn2" path="res://resources/medium_asteroids.tres" id="2_8nlsx"]
+[ext_resource type="Script" uid="uid://b38xl63470acm" path="res://components/C_health.gd" id="2_e8bfv"]
+[ext_resource type="Script" uid="uid://b68ca8rjq5bth" path="res://components/C_hurtbox.gd" id="3_8nlsx"]
+[ext_resource type="Texture2D" uid="uid://dmihtf5snxcgo" path="res://icon.svg" id="4_075hj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmhux"]
+size = Vector2(12, 12)
+
+[node name="AsteroidsMedium" type="Node2D"]
+script = ExtResource("1_mtww1")
+asteroid_stats = ExtResource("2_8nlsx")
+metadata/_custom_type_script = "uid://e5u7g0s68l5p"
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurt_box_component")]
+script = ExtResource("2_e8bfv")
+hurt_box_component = NodePath("../HurtboxComponent")
+metadata/_custom_type_script = "uid://b38xl63470acm"
+
+[node name="HurtboxComponent" type="Node" parent="." node_paths=PackedStringArray("hurt_box")]
+script = ExtResource("3_8nlsx")
+hurt_box = NodePath("../HurtBox")
+metadata/_custom_type_script = "uid://b68ca8rjq5bth"
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_rmhux")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09374999, 0.09374999)
+texture = ExtResource("4_075hj")
+
+[connection signal="died" from="HealthComponent" to="." method="died"]

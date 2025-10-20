@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AsteroidResource" load_steps=2 format=3 uid="uid://b5dykcth5ipn2"]
+
+[ext_resource type="Script" uid="uid://bfjw3w10gpfxb" path="res://resources/asteroid_resource.gd" id="1_oe3fn"]
+
+[resource]
+script = ExtResource("1_oe3fn")
+speed = 24.0
+taille = 1
+metadata/_custom_type_script = "uid://bfjw3w10gpfxb"
