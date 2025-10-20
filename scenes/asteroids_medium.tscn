@@ -32,3 +32,5 @@ shape = SubResource("RectangleShape2D_rmhux")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.09374999, 0.09374999)
 texture = ExtResource("4_075hj")
+
+[connection signal="died" from="HealthComponent" to="." method="died"]

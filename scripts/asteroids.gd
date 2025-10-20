@@ -21,10 +21,10 @@ func died() -> void:
 	match asteroid_stats.taille:
 		asteroid_stats.tailles.BIG:
 			print("Big asteroid died")
-			asteroid_died.emit()
+			asteroid_died.emit("BIG", self)
 		asteroid_stats.tailles.MEDIUM:
 			print("Medium asteroid died")
-			asteroid_died.emit()
+			asteroid_died.emit("MEDIUM", self)
 		asteroid_stats.tailles.SMALL:
 			print("Small asteroid died")
-			asteroid_died.emit()
+			asteroid_died.emit("SMALL", self)

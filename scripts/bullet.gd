@@ -11,3 +11,6 @@ func _physics_process(delta):
 
 func _on_timer_timeout() -> void:
 	queue_free()
+
+func _on_area_entered(_area: Area2D) -> void:
+	queue_free() # TODO: Mettre une animation à la place 
